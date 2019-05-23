@@ -2,10 +2,19 @@
   text-align: center;
 }
 
+
+
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
+}
+.Restaurants{
+
+  background: goldenrod;
+  font: 100;
+  
 }
 
 .App-header {
@@ -30,4 +39,7 @@
   to {
     transform: rotate(360deg);
   }
+
+
+
 }
