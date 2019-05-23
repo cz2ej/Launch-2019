@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React from "react";
 import axios from "axios";
 import "./App.css";
-import { Map, CircleMarker, TileLayer } from "react-leaflet";
+import { Map, CircleMarker, TileLayer, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -30,35 +31,41 @@ export default class App extends React.Component {
   render() {
     console.log(this.state.name);
     return (
-      <div>
-        <Map
-          style={{ height: "480px", width: "100%" }}
-          zoom={1}
-          center={[-0.09, 51.505]}>
-          <TileLayer url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <CircleMarker
-            center={[51.505, -0.09]} />
+      <div className="page">
+        <h1 className='heading1'>Restaurants Open in Charlottesville</h1>
 
-        </Map>
-        <footer>
+
+        <p>
           <ul>
             {this.state.info.map(mapper =>
-              (<li className="Restaurants">{mapper.name}<ul> Location: {mapper.formatted_address}<li>{mapper.price_level}</li></ul></li>)
+              (<li className="Restaurants">{mapper.name}<ul> Location: {mapper.formatted_address}<li>{"$".repeat(mapper.price_level)}</li><li>Rating: {mapper.rating}</li></ul></li>)
             )}
-
-
-
-
-
-
-
-
-
-
-
-
           </ul>
-        </footer>
+        </p>
+
+
+        <p className="Open">
+          <Map
+            style={{ height: "480px", width: "100%" }}
+            zoom={11}
+            center={[38.036, -78.50]}>
+            <TileLayer url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+            {this.state.info.map(mapper => {
+              console.log(mapper)
+              return (<CircleMarker center={[mapper.geometry.location.lat, mapper.geometry.location.lng]}>
+                <Popup> <li>{mapper.name}
+                </li><li> Rating: {mapper.rating}</li></Popup>
+
+              </CircleMarker>)
+            })}
+
+
+          </Map>
+
+
+
+        </p>
 
 
 

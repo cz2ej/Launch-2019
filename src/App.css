@@ -1,7 +1,25 @@
 .App {
   text-align: center;
 }
+.Open{
+  display: flex;
+  justify-content: flex-end;
+  font: Arial;
+  background: sandybrown;
+  text-align: center;
+  
 
+}
+.page{
+  
+}
+.heading1{
+  display: flex;
+  justify-content: center;
+  
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
 
 
 
@@ -11,9 +29,7 @@
   pointer-events: none;
 }
 .Restaurants{
-
-  background: goldenrod;
-  font: 100;
+    font: Arial;
   
 }
 
